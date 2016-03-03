@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="DooVR : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>DooVR</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://drive.google.com/file/d/0B2NCr5pSG16aTFpfcFg4NHVMMVU/view?usp=sharing">Läs projektrapport</a>
+
+          <h1 id="project_title">DooVR</h1>
+          <h2 id="project_tagline"></h2>
+
+            <!--<section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Isafo/DooVR_showcase/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Isafo/DooVR_showcase/tarball/master">Download this project as a tar.gz file</a>
+            </section>-->
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Om projektet</h3>
+
+        <p>I applikationen DooVR modellerar användaren i 3D med hjälp av en HMD och handhållna 6DoF-enheter. Applikationen ger konstnärer möjlighet att modellera på samma sätt som de gör i verkligheten men utan verklighetens begränsningar. Detta kräver att miljön som användaren arbetar i känns naturlig och att all teknik som används är synkroniserad och fungerar tillsammans. Det krävs också ett objekt som kan förändras på oändligt många sätt och funktioner som ger användaren både frihet och precision i sitt skapande.</p>
+        
+        <p>Eftersom modellen ska kunna förändras och formas i realtid ställs ökade krav på datastrukturen. Modellen kan antingen representeras som en mesh eller som en faktisk volym. Där de två representationerna har olika för och nackdelar. I DooVR har både en ytbaserad och en volymbaserad representation implementerats.</p>
+        
+        <h3>Ytbaserad metod</h3>
+        <p>Den ytbaserade använder en datastuktur som kallas half-edge. Med hjälp av data strukturen kan "edge collapses" och "edge splits" utföras när två vertexpunkter kommer för nära respektive för långt bort från varandra. Vilket gör det möjligt att flytta på vertexpunkterna i meshen och samtidigt behålla upplösningen.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ur1mYmKPilU" frameborder="0" allowfullscreen></iframe>
+         
+        
+        <h3>Volymbaserad metod</h3>
+          <p>I den volymbaserade ändras vid modellering skalärvärden i ett skalärfält. Skalärfältet används sedan för att skapa en yta med Marching cubes algoritmen. För att göra det möjligt för användaren att modellera små detaljer krävs ett kompakt skalärfält vilket innebär mer data. Arbetsytan bör även vara stor eftersom användaren arbetar ståendes och med hela kroppen. Detta gör att mängden data lätt blir väldigt stor och behövs hanteras för att kunna köras på dagens persondatorer. För att det ska vara möjligt att köra Marching cubes algoritmen i realtid (60FPS) för att återskapa de delar av ytan som förändrats har en sorteringsstruktur kallad "Octree" implementerats och optimeringar har gjorts. Octree-strukturen gör det möjligt att hitta de skalärvärden som är relevanta och utesluta de värden som inte är det. Optimeringarna har inneburit att ärva och cachea data på ett sådant sätt att samma data endast sparas på ett ställe och beräknas en gång, vilket inte är fallet i orginal-algorithmen.</p>
+                
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oErGxIDX7sY" frameborder="0" allowfullscreen></iframe>
+        
+        <h3>
+        <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+        
+        <ul>
+          <li>Olle Grahn (<a href="https://github.com/grahnen92" class="user-mention">@grahnen92</a>)</li>
+          <li>Isabelle Forsman (<a href="https://github.com/isafo" class="user-mention">@isafo</a>)</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">DooVR maintained by <a href="https://github.com/Isafo">Isafo</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
